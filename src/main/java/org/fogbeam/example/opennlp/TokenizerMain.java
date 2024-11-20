@@ -14,8 +14,10 @@ public class TokenizerMain {
 	public static void main(String[] args) throws Exception {
 		// Ruta del modelo
 		String modelPath = "models/en-token.model";
-		// Directorio de entrada
+		// Directorio de entrada y salida
 		String inputDir = "input_texts";
+		String outputDir = "output_texts";
+		String outputFilePath = outputDir + "/output_tokens.txt";
 
 		// Obtener archivos de entrada
 		List<Path> inputFiles = getFilesFromDirectory(inputDir);
@@ -23,32 +25,32 @@ public class TokenizerMain {
 		// Inicializar el modelo de tokenización
 		Tokenizer tokenizer = initializeTokenizer(modelPath);
 
-		// Procesar y mostrar tokens de cada archivo
-		for (Path file : inputFiles) {
-			System.out.println("Procesando archivo: " + file.getFileName());
+		// Crear el directorio de salida si no existe
+		Files.createDirectories(Paths.get(outputDir));
 
-			// Leer el contenido del archivo
-			String content = Files.readString(file);
+		// Abrir archivo de salida
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
+			for (Path file : inputFiles) {
+				System.out.println("Procesando archivo: " + file.getFileName());
 
-			// Tokenizar el contenido
-			String[] tokens = tokenizer.tokenize(content);
+				// Leer el contenido del archivo
+				String content = Files.readString(file);
 
-			// Mostrar tokens por consola
-			for (String token : tokens) {
-				System.out.println(token);
+				// Tokenizar el contenido
+				String[] tokens = tokenizer.tokenize(content);
+
+				// Escribir tokens en el archivo de salida
+				for (String token : tokens) {
+					writer.write(token);
+					writer.newLine();
+				}
+				writer.newLine(); // Separar los tokens de diferentes archivos
 			}
 		}
 
-		System.out.println("Tokenización completada.");
+		System.out.println("Archivo de tokens generado en: " + outputFilePath);
 	}
 
-	/**
-	 * Inicializa el tokenizador con el modelo especificado.
-	 *
-	 * @param modelPath Ruta del modelo.
-	 * @return Instancia de Tokenizer.
-	 * @throws IOException Si ocurre un error al cargar el modelo.
-	 */
 	private static Tokenizer initializeTokenizer(String modelPath) throws IOException {
 		try (InputStream modelIn = new FileInputStream(modelPath)) {
 			TokenizerModel model = new TokenizerModel(modelIn);
