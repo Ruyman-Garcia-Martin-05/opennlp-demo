@@ -1,63 +1,41 @@
-
 package org.fogbeam.example.opennlp;
 
-
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import opennlp.tools.tokenize.Tokenizer;
-import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.TokenizerModel;
+public class TokenizerMain {
 
+	public static void main(String[] args) throws Exception {
+		// Directorio de entrada
+		String inputDir = "input_texts";
 
-public class TokenizerMain
-{
-	public static void main( String[] args ) throws Exception
-	{
-		
-		// the provided model
-		// InputStream modelIn = new FileInputStream( "models/en-token.bin" );
+		// Obtener archivos de entrada
+		List<Path> inputFiles = getFilesFromDirectory(inputDir);
 
-		
-		// the model we trained
-		InputStream modelIn = new FileInputStream( "models/en-token.model" );
-		
-		try
-		{
-			TokenizerModel model = new TokenizerModel( modelIn );
-		
-			Tokenizer tokenizer = new TokenizerME(model);
-			
-				/* note what happens with the "three depending on which model you use */
-			String[] tokens = tokenizer.tokenize
-					(  "A ranger journeying with Oglethorpe, founder of the Georgia Colony, " 
-							+ " mentions \"three Mounts raised by the Indians over three of their Great Kings" 
-							+ " who were killed in the Wars.\"" );
-			
-			for( String token : tokens )
-			{
-				System.out.println( token );
-			}
-			
+		// Imprimir los nombres de los archivos leídos
+		for (Path file : inputFiles) {
+			System.out.println("Archivo encontrado: " + file.getFileName());
 		}
-		catch( IOException e )
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			if( modelIn != null )
-			{
-				try
-				{
-					modelIn.close();
-				}
-				catch( IOException e )
-				{
-				}
+
+		System.out.println("Lectura de archivos completada.");
+	}
+
+	/**
+	 * Obtiene todos los archivos de texto desde un directorio específico.
+	 *
+	 * @param directoryPath Ruta del directorio.
+	 * @return Lista de rutas de archivos.
+	 * @throws IOException Si ocurre un error al acceder al directorio.
+	 */
+	private static List<Path> getFilesFromDirectory(String directoryPath) throws IOException {
+		List<Path> files = new ArrayList<>();
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(directoryPath), "*.txt")) {
+			for (Path entry : stream) {
+				files.add(entry);
 			}
 		}
-		System.out.println( "\n-----\ndone" );
+		return files;
 	}
 }
