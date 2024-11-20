@@ -1,0 +1,55 @@
+\doxysection{org.\+fogbeam.\+example.\+opennlp.\+training.\+Chunker\+Trainer Class Reference}
+\hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_chunker_trainer}{}\label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_chunker_trainer}\index{org.fogbeam.example.opennlp.training.ChunkerTrainer@{org.fogbeam.example.opennlp.training.ChunkerTrainer}}
+
+
+Clase para entrenar un modelo de chunking con Open\+NLP.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_chunker_trainer_afe3aca3ce6d44e121520a6db250b331c}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase para entrenar un modelo de chunking con Open\+NLP. 
+
+Utiliza datos de entrenamiento para generar un modelo que puede identificar estructuras gramaticales (chunks) en un texto. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_chunker_trainer_afe3aca3ce6d44e121520a6db250b331c}\index{org.fogbeam.example.opennlp.training.ChunkerTrainer@{org.fogbeam.example.opennlp.training.ChunkerTrainer}!main@{main}}
+\index{main@{main}!org.fogbeam.example.opennlp.training.ChunkerTrainer@{org.fogbeam.example.opennlp.training.ChunkerTrainer}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_chunker_trainer_afe3aca3ce6d44e121520a6db250b331c} 
+static void org.\+fogbeam.\+example.\+opennlp.\+training.\+Chunker\+Trainer.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Método principal que realiza el entrenamiento del modelo de chunking.
+
+Este método utiliza un archivo de datos de entrenamiento para crear un modelo preentrenado que puede identificar chunks gramaticales en texto.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Argumentos de la línea de comandos (no se usan). \\
+\hline
+\end{DoxyParams}
+Manejo de errores durante la carga de datos, el entrenamiento o el guardado del modelo. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al leer, entrenar o guardar el modelo.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al cerrar el flujo de datos de entrenamiento. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cerrar el flujo.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al cerrar el flujo de salida del modelo. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cerrar el flujo.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/org/fogbeam/example/opennlp/training/Chunker\+Trainer.\+java\end{DoxyCompactItemize}

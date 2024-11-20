@@ -1,0 +1,50 @@
+\doxysection{org.\+fogbeam.\+example.\+opennlp.\+training.\+Name\+Finder\+Trainer Class Reference}
+\hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_name_finder_trainer}{}\label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_name_finder_trainer}\index{org.fogbeam.example.opennlp.training.NameFinderTrainer@{org.fogbeam.example.opennlp.training.NameFinderTrainer}}
+
+
+Clase para entrenar un modelo de reconocimiento de nombres con Open\+NLP.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_name_finder_trainer_a5598df8b5f8ffb35f022358ed3b124ed}{main}} (String\mbox{[}$\,$\mbox{]} args)  throws Exception 
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase para entrenar un modelo de reconocimiento de nombres con Open\+NLP. 
+
+Utiliza datos de entrenamiento para generar un modelo que puede reconocer nombres propios (entidades nombradas) en texto.
+
+\begin{DoxyNote}{Note}
+Los datos de entrenamiento deben contener al menos 15,000 oraciones para generar un modelo con buen desempeño. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_name_finder_trainer_a5598df8b5f8ffb35f022358ed3b124ed}\index{org.fogbeam.example.opennlp.training.NameFinderTrainer@{org.fogbeam.example.opennlp.training.NameFinderTrainer}!main@{main}}
+\index{main@{main}!org.fogbeam.example.opennlp.training.NameFinderTrainer@{org.fogbeam.example.opennlp.training.NameFinderTrainer}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_name_finder_trainer_a5598df8b5f8ffb35f022358ed3b124ed} 
+static void org.\+fogbeam.\+example.\+opennlp.\+training.\+Name\+Finder\+Trainer.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Método principal que realiza el entrenamiento del modelo de reconocimiento de nombres.
+
+Este método utiliza un archivo de datos de entrenamiento para crear un modelo preentrenado que puede ser utilizado para reconocer entidades nombradas, como nombres de personas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Argumentos de la línea de comandos (no se usan). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Si ocurre algún error durante la ejecución del programa. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/org/fogbeam/example/opennlp/training/Name\+Finder\+Trainer.\+java\end{DoxyCompactItemize}

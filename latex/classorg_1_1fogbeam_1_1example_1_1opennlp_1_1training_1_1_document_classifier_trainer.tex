@@ -1,0 +1,60 @@
+\doxysection{org.\+fogbeam.\+example.\+opennlp.\+training.\+Document\+Classifier\+Trainer Class Reference}
+\hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_document_classifier_trainer}{}\label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_document_classifier_trainer}\index{org.fogbeam.example.opennlp.training.DocumentClassifierTrainer@{org.fogbeam.example.opennlp.training.DocumentClassifierTrainer}}
+
+
+Clase para entrenar un modelo de clasificación de documentos con Open\+NLP.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_document_classifier_trainer_ad740f4a3bd9a068afd18c2be85deba75}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase para entrenar un modelo de clasificación de documentos con Open\+NLP. 
+
+Utiliza datos de entrenamiento para generar un modelo que puede clasificar texto en categorías predefinidas. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_document_classifier_trainer_ad740f4a3bd9a068afd18c2be85deba75}\index{org.fogbeam.example.opennlp.training.DocumentClassifierTrainer@{org.fogbeam.example.opennlp.training.DocumentClassifierTrainer}!main@{main}}
+\index{main@{main}!org.fogbeam.example.opennlp.training.DocumentClassifierTrainer@{org.fogbeam.example.opennlp.training.DocumentClassifierTrainer}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1training_1_1_document_classifier_trainer_ad740f4a3bd9a068afd18c2be85deba75} 
+static void org.\+fogbeam.\+example.\+opennlp.\+training.\+Document\+Classifier\+Trainer.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Método principal que realiza el entrenamiento del modelo de clasificación de documentos.
+
+Este método utiliza un archivo de datos de entrenamiento para crear un modelo preentrenado que puede ser utilizado para clasificar texto en categorías.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Argumentos de la línea de comandos (no se usan). \\
+\hline
+\end{DoxyParams}
+Manejo de errores durante la carga de datos o el entrenamiento. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al leer o procesar los datos de entrenamiento.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al cerrar el flujo de datos de entrenamiento. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cerrar el flujo.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al guardar el modelo entrenado. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al guardar el modelo.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al cerrar el flujo de salida del modelo. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cerrar el flujo.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/org/fogbeam/example/opennlp/training/Document\+Classifier\+Trainer.\+java\end{DoxyCompactItemize}
