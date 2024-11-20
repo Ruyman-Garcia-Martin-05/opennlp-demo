@@ -1,0 +1,53 @@
+\doxysection{org.\+fogbeam.\+example.\+opennlp.\+Sentence\+Detection\+Main Class Reference}
+\hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_sentence_detection_main}{}\label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_sentence_detection_main}\index{org.fogbeam.example.opennlp.SentenceDetectionMain@{org.fogbeam.example.opennlp.SentenceDetectionMain}}
+
+
+Clase principal para detectar oraciones en un texto con Open\+NLP.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_sentence_detection_main_ac9dc50e787e53db95a38e87b633ceea9}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase principal para detectar oraciones en un texto con Open\+NLP. 
+
+Esta clase utiliza un modelo preentrenado de detección de oraciones para procesar un archivo de texto y extraer las oraciones contenidas en él. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_sentence_detection_main_ac9dc50e787e53db95a38e87b633ceea9}\index{org.fogbeam.example.opennlp.SentenceDetectionMain@{org.fogbeam.example.opennlp.SentenceDetectionMain}!main@{main}}
+\index{main@{main}!org.fogbeam.example.opennlp.SentenceDetectionMain@{org.fogbeam.example.opennlp.SentenceDetectionMain}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_sentence_detection_main_ac9dc50e787e53db95a38e87b633ceea9} 
+static void org.\+fogbeam.\+example.\+opennlp.\+Sentence\+Detection\+Main.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Método principal que carga un modelo de detección de oraciones, procesa un archivo de texto de demo y muestra las oraciones detectadas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Argumentos de la línea de comandos (no se usan). \\
+\hline
+\end{DoxyParams}
+Manejo de errores durante la carga del modelo o el procesamiento del archivo de demo. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cargar el modelo o procesar los datos de entrada.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al cerrar el flujo de entrada del modelo. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cerrar el flujo del modelo.\\
+\hline
+\end{DoxyExceptions}
+Manejo de errores al cerrar el flujo de datos de demo. 
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Si ocurre un error al cerrar el flujo de demo.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/org/fogbeam/example/opennlp/Sentence\+Detection\+Main.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,49 @@
+\doxysection{org.\+fogbeam.\+example.\+opennlp.\+Chunker\+Main Class Reference}
+\hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_chunker_main}{}\label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_chunker_main}\index{org.fogbeam.example.opennlp.ChunkerMain@{org.fogbeam.example.opennlp.ChunkerMain}}
+
+
+Clase principal para demostrar el uso del modelo de chunking de Open\+NLP.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_chunker_main_aebe7fefe98c9216bf8fa956439def47b}{main}} (String\mbox{[}$\,$\mbox{]} args)  throws Exception 
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase principal para demostrar el uso del modelo de chunking de Open\+NLP. 
+
+Esta clase utiliza el modelo de chunking para analizar una oración y asignar etiquetas de chunks (trozos) a las palabras basándose en las partes del discurso (POS tags). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_chunker_main_aebe7fefe98c9216bf8fa956439def47b}\index{org.fogbeam.example.opennlp.ChunkerMain@{org.fogbeam.example.opennlp.ChunkerMain}!main@{main}}
+\index{main@{main}!org.fogbeam.example.opennlp.ChunkerMain@{org.fogbeam.example.opennlp.ChunkerMain}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{classorg_1_1fogbeam_1_1example_1_1opennlp_1_1_chunker_main_aebe7fefe98c9216bf8fa956439def47b} 
+static void org.\+fogbeam.\+example.\+opennlp.\+Chunker\+Main.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Método principal que carga el modelo de chunking, analiza una oración y muestra los resultados.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Argumentos de la línea de comandos (no se usan). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & En caso de que ocurra un error durante la ejecución. \\
+\hline
+\end{DoxyExceptions}
+Las etiquetas de chunks incluyen tipos como\+:
+\begin{DoxyItemize}
+\item I-\/\+NP\+: Palabras dentro de una frase nominal.
+\item I-\/\+VP\+: Palabras dentro de una frase verbal.
+\item B-\/\+CHUNK\+: Primera palabra de un chunk.
+\item I-\/\+CHUNK\+: Palabras subsecuentes dentro de un chunk.
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/org/fogbeam/example/opennlp/Chunker\+Main.\+java\end{DoxyCompactItemize}
