@@ -1,13 +1,13 @@
-
 package org.fogbeam.example.opennlp.training;
-
 
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSSample;
@@ -17,77 +17,58 @@ import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
 
+public class PartOfSpeechTaggerTrainer {
 
-public class PartOfSpeechTaggerTrainer
-{
-	public static void main( String[] args )
-	{
+	private static final Logger LOGGER = Logger.getLogger(PartOfSpeechTaggerTrainer.class.getName());
+
+	public static void main(String[] args) {
 		POSModel model = null;
-		InputStream dataIn = null;
-		try
-		{
-			dataIn = new FileInputStream( "training_data/en-pos.train" );
-			ObjectStream<String> lineStream = new PlainTextByLineStream(
-					dataIn, "UTF-8" );
-			ObjectStream<POSSample> sampleStream = new WordTagSampleStream(
-					lineStream );
-			model = POSTaggerME.train( "en", sampleStream,
-					TrainingParameters.defaultParams(), null, null );
-		}
-		catch( IOException e )
-		{
-			// Failed to read or parse training data, training failed
-			e.printStackTrace();
-		}
-		finally
-		{
-			if( dataIn != null )
-			{
-				try
-				{
-					dataIn.close();
+		String trainingDataPath = "training_data/en-pos.train";
+		String modelFilePath = "models/en-pos.model";
+
+		ObjectStream<String> lineStream = null;
+		ObjectStream<POSSample> sampleStream = null;
+		try {
+			lineStream = new PlainTextByLineStream(new InputStreamReader(new FileInputStream(trainingDataPath), Charset.forName("UTF-8")));
+			sampleStream = new WordTagSampleStream(lineStream);
+
+			LOGGER.info("Entrenando el modelo de etiquetado de partes del discurso...");
+			model = POSTaggerME.train("en", sampleStream,
+					TrainingParameters.defaultParams(), null, null);
+
+			LOGGER.info("Modelo entrenado exitosamente.");
+
+		} catch (IOException e) {
+			LOGGER.log(Level.SEVERE, "Error al leer los datos de entrenamiento o entrenar el modelo", e);
+		} finally {
+			if (sampleStream != null) {
+				try {
+					sampleStream.close();
+				} catch (IOException e) {
+					LOGGER.log(Level.SEVERE, "Error closing sampleStream", e);
 				}
-				catch( IOException e )
-				{
-					// Not an issue, training already finished.
-					// The exception should be logged and investigated
-					// if part of a production system.
-					e.printStackTrace();
+			}
+			if (lineStream != null) {
+				try {
+					lineStream.close();
+				} catch (IOException e) {
+					LOGGER.log(Level.SEVERE, "Error closing lineStream", e);
 				}
 			}
 		}
-		OutputStream modelOut = null;
-		String modelFile = "models/en-pos.model";
-		try
-		{
-			modelOut = new BufferedOutputStream( new FileOutputStream(
-					modelFile ) );
-			model.serialize( modelOut );
-		}
-		catch( IOException e )
-		{
-			// Failed to save model
-			e.printStackTrace();
-		}
-		finally
-		{
-			if( modelOut != null )
-			{
-				try
-				{
-					modelOut.close();
-				}
-				catch( IOException e )
-				{
-					// Failed to correctly save model.
-					// Written model might be invalid.
-					e.printStackTrace();
-				}
+
+		if (model != null) {
+			try (BufferedOutputStream modelOut = new BufferedOutputStream(new FileOutputStream(modelFilePath))) {
+				LOGGER.info("Guardando el modelo entrenado en: " + modelFilePath);
+				model.serialize(modelOut);
+				LOGGER.info("Modelo guardado exitosamente.");
+			} catch (IOException e) {
+				LOGGER.log(Level.SEVERE, "Error al guardar el modelo entrenado", e);
 			}
-						
+		} else {
+			LOGGER.warning("El modelo no fue entrenado. Verifica los datos de entrada y el proceso de entrenamiento.");
 		}
-		
-		System.out.println( "done" );
-		
+
+		LOGGER.info("Proceso finalizado.");
 	}
 }

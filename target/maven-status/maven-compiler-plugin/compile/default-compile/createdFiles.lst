@@ -1,0 +1,14 @@
+org\fogbeam\example\opennlp\NameFinderMain.class
+org\fogbeam\example\opennlp\PartOfSpeechTaggerMain.class
+org\fogbeam\example\opennlp\DocumentClassifierMain.class
+org\fogbeam\example\opennlp\training\SentenceDetectionTrainer.class
+org\fogbeam\example\opennlp\ChunkerMain.class
+org\fogbeam\example\opennlp\training\DocumentClassifierTrainer.class
+org\fogbeam\example\opennlp\SentenceDetectionMain.class
+org\fogbeam\example\opennlp\training\NameFinderTrainer.class
+org\fogbeam\example\opennlp\training\ChunkerTrainer.class
+org\fogbeam\example\opennlp\training\PartOfSpeechTaggerTrainer.class
+org\fogbeam\example\opennlp\TokenizerMain.class
+org\fogbeam\example\opennlp\training\ParserTrainer.class
+org\fogbeam\example\opennlp\ParserMain.class
+org\fogbeam\example\opennlp\training\TokenizerTrainer.class
