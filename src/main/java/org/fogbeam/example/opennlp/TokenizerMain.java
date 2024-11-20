@@ -34,7 +34,7 @@ public class TokenizerMain {
 				System.out.println("Procesando archivo: " + file.getFileName());
 
 				// Leer el contenido del archivo
-				String content = Files.readString(file);
+				String content = readFileContent(file);
 
 				// Tokenizar el contenido
 				String[] tokens = tokenizer.tokenize(content);
@@ -66,5 +66,23 @@ public class TokenizerMain {
 			}
 		}
 		return files;
+	}
+
+	/**
+	 * Lee el contenido de un archivo de texto como un String.
+	 *
+	 * @param file Ruta del archivo.
+	 * @return Contenido del archivo.
+	 * @throws IOException Si ocurre un error al leer el archivo.
+	 */
+	private static String readFileContent(Path file) throws IOException {
+		StringBuilder content = new StringBuilder();
+		try (BufferedReader reader = Files.newBufferedReader(file)) {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				content.append(line).append(System.lineSeparator());
+			}
+		}
+		return content.toString();
 	}
 }
