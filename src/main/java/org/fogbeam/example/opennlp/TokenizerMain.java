@@ -11,11 +11,24 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * @class TokenizerMain
+ * @brief Clase principal para procesar archivos de texto y generar tokens con OpenNLP.
+ *
+ * Esta clase lee archivos de texto de un directorio de entrada, utiliza un modelo de
+ * tokenización para dividir el contenido en tokens, y escribe los tokens en un único
+ * archivo de salida.
+ */
 public class TokenizerMain {
 
-	// Logger para manejar mensajes y errores
+	/** Logger para manejar mensajes de error y depuración. */
 	private static final Logger LOGGER = Logger.getLogger(TokenizerMain.class.getName());
 
+	/**
+	 * Método principal que realiza la tokenización de archivos de texto.
+	 *
+	 * @param args Argumentos de la línea de comandos (no se usan).
+	 */
 	public static void main(String[] args) {
 		// Ruta del modelo
 		String modelPath = "models/en-token.model";
@@ -57,11 +70,21 @@ public class TokenizerMain {
 			LOGGER.info("Archivo de tokens generado en: " + outputFilePath);
 
 		} catch (IOException e) {
-			// Registrar el error con un nivel SEVERE
+			/**
+			 * Manejo de errores durante el procesamiento de tokenización.
+			 * @exception IOException Si ocurre un error al leer archivos o directorios, o al escribir tokens.
+			 */
 			LOGGER.log(Level.SEVERE, "Error durante el procesamiento de tokenización", e);
 		}
 	}
 
+	/**
+	 * Inicializa el modelo de tokenización a partir de la ruta proporcionada.
+	 *
+	 * @param modelPath Ruta del archivo del modelo.
+	 * @return Una instancia de Tokenizer.
+	 * @throws IOException Si ocurre un error al cargar el modelo.
+	 */
 	private static Tokenizer initializeTokenizer(String modelPath) throws IOException {
 		try (InputStream modelIn = new FileInputStream(modelPath)) {
 			TokenizerModel model = new TokenizerModel(modelIn);
@@ -72,6 +95,13 @@ public class TokenizerMain {
 		}
 	}
 
+	/**
+	 * Obtiene una lista de archivos de texto de un directorio.
+	 *
+	 * @param directoryPath Ruta del directorio.
+	 * @return Lista de archivos en el directorio.
+	 * @throws IOException Si ocurre un error al leer el directorio.
+	 */
 	private static List<Path> getFilesFromDirectory(String directoryPath) throws IOException {
 		List<Path> files = new ArrayList<>();
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(directoryPath), "*.txt")) {
@@ -89,7 +119,7 @@ public class TokenizerMain {
 	 * Lee el contenido de un archivo de texto como un String.
 	 *
 	 * @param file Ruta del archivo.
-	 * @return Contenido del archivo.
+	 * @return Contenido del archivo como String.
 	 * @throws IOException Si ocurre un error al leer el archivo.
 	 */
 	private static String readFileContent(Path file) throws IOException {

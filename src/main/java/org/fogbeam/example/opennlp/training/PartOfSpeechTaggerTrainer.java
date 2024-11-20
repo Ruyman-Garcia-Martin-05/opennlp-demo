@@ -17,10 +17,23 @@ import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
 
+/**
+ * @class PartOfSpeechTaggerTrainer
+ * @brief Clase para entrenar un modelo de etiquetado de partes del discurso (POS) con OpenNLP.
+ *
+ * Esta clase utiliza datos de entrenamiento para generar un modelo de etiquetado
+ * de partes del discurso que puede ser usado para analizar texto.
+ */
 public class PartOfSpeechTaggerTrainer {
 
+	/** Logger para manejar mensajes y errores. */
 	private static final Logger LOGGER = Logger.getLogger(PartOfSpeechTaggerTrainer.class.getName());
 
+	/**
+	 * Método principal que realiza el entrenamiento del modelo de etiquetado de POS.
+	 *
+	 * @param args Argumentos de la línea de comandos (no se usan).
+	 */
 	public static void main(String[] args) {
 		POSModel model = null;
 		String trainingDataPath = "training_data/en-pos.train";
@@ -29,6 +42,7 @@ public class PartOfSpeechTaggerTrainer {
 		ObjectStream<String> lineStream = null;
 		ObjectStream<POSSample> sampleStream = null;
 		try {
+			// Cargar datos de entrenamiento
 			lineStream = new PlainTextByLineStream(new InputStreamReader(new FileInputStream(trainingDataPath), Charset.forName("UTF-8")));
 			sampleStream = new WordTagSampleStream(lineStream);
 
@@ -39,21 +53,17 @@ public class PartOfSpeechTaggerTrainer {
 			LOGGER.info("Modelo entrenado exitosamente.");
 
 		} catch (IOException e) {
+			/**
+			 * Manejo de errores durante la carga de datos o el entrenamiento.
+			 * @exception IOException Si ocurre un error al leer los datos de entrada o al entrenar.
+			 */
 			LOGGER.log(Level.SEVERE, "Error al leer los datos de entrenamiento o entrenar el modelo", e);
 		} finally {
-			if (sampleStream != null) {
-				try {
-					sampleStream.close();
-				} catch (IOException e) {
-					LOGGER.log(Level.SEVERE, "Error closing sampleStream", e);
-				}
-			}
-			if (lineStream != null) {
-				try {
-					lineStream.close();
-				} catch (IOException e) {
-					LOGGER.log(Level.SEVERE, "Error closing lineStream", e);
-				}
+			try {
+				if (sampleStream != null) sampleStream.close();
+				if (lineStream != null) lineStream.close();
+			} catch (IOException e) {
+				LOGGER.log(Level.SEVERE, "Error cerrando flujos de datos", e);
 			}
 		}
 
